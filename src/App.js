@@ -4,12 +4,26 @@ import ImageGallery from "./ImageGallery";
 import { useRef, useState } from 'react';
 
 function App() {
-  const [inputText, setInputText] = useState("")
+  const [fetchData, setFetchData] = useState([]);
+  // テキストフィールドで入力された値を取得している
   const ref = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(ref.current.value)
+
+    // API URL
+    const endpointURL =  `https://pixabay.com/api/?key=28196899-8a3428ad749b0c3fa202e73a6&q=${ref.current.value}&image_type=photo`
+
+    // API叩く
+    fetch(endpointURL)
+      .then((res) => {
+        return res.json()
+      })
+      .then((data) => {
+        setFetchData(data)
+      })
+
   }
 
   return (
