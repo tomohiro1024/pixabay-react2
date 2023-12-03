@@ -32,7 +32,7 @@ function App() {
     <form onSubmit={(e) => handleSubmit(e)}>
       <input type='text' placeholder='画像を探す' ref={ref}></input>
     </form>
-    <ImageGallery />
+    <ImageGallery fetchData={fetchData} />
   </div>
   )
 }
